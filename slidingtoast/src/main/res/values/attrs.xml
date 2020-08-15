@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="SlidingToastView">
+        <attr name="slidingToastMessageColor" format="color" />
+        <attr name="slidingToastBackgroundColor" format="color" />
+        <attr name="slidingToastMessageSize" format="dimension" />
+        <attr name="slidingToastPaddingTop" format="dimension" />
+        <attr name="slidingToastPaddingBottom" format="dimension" />
+        <attr name="slidingToastPaddingStart" format="dimension" />
+        <attr name="slidingToastPaddingEnd" format="dimension" />
+    </declare-styleable>
+
+</resources>

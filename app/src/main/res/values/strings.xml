@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SlidingToast</string>
+    <string name="top_toast">TOP TOAST</string>
+    <string name="bottom_toast">BOTTOM TOAST</string>
+</resources>
