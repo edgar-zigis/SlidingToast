@@ -21,7 +21,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.zigis.slidingtoast.SlidingToastDismissListener.DismissType.Companion.DURATION_COMPLETE
 import com.zigis.slidingtoast.SlidingToastDismissListener.DismissType.Companion.PROGRAMMATIC_DISMISS
-import com.zigis.slidingtoast.SlidingToastDismissListener.DismissType.Companion.USER_ACTION_CLICK
 import com.zigis.slidingtoast.SlidingToastDismissListener.DismissType.Companion.USER_DISMISS
 import kotlinx.android.synthetic.main.view_sliding_toast.view.*
 import kotlin.math.abs
@@ -59,9 +58,7 @@ internal class SlidingToastView constructor(
     private val dismissType: Int
         get() {
             var dismissType = PROGRAMMATIC_DISMISS
-            if (actionClickDismiss) {
-                dismissType = USER_ACTION_CLICK
-            } else if (timeOutDismiss) {
+            if (timeOutDismiss) {
                 dismissType = DURATION_COMPLETE
             }
             return dismissType
@@ -80,7 +77,6 @@ internal class SlidingToastView constructor(
     private var animationOutBottom = 0
     private var isAutoDismissEnabled = false
     private var isSwipeable = false
-    private var actionClickDismiss = false
     private var timeOutDismiss = false
 
     //  Initialization

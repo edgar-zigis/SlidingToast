@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">SlidingToast</string>
-    <string name="top_toast">TOP TOAST</string>
-    <string name="bottom_toast">BOTTOM TOAST</string>
+
+    <string name="top_toast">SHOW TOP TOAST</string>
+    <string name="bottom_toast">SHOW BOTTOM TOAST</string>
+
+    <string name="top_toast_message">This is an example of the error message</string>
+    <string name="bottom_toast_message">This is an example of the success message</string>
+
 </resources>

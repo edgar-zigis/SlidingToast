@@ -8,7 +8,6 @@ import com.zigis.slidingtoast.SlidingToastDismissListener
 import com.zigis.slidingtoast.SlidingToastDismissListener.DismissType.Companion.DURATION_COMPLETE
 import com.zigis.slidingtoast.SlidingToastDismissListener.DismissType.Companion.PROGRAMMATIC_DISMISS
 import com.zigis.slidingtoast.SlidingToastDismissListener.DismissType.Companion.REPLACE_DISMISS
-import com.zigis.slidingtoast.SlidingToastDismissListener.DismissType.Companion.USER_ACTION_CLICK
 import com.zigis.slidingtoast.SlidingToastDismissListener.DismissType.Companion.USER_DISMISS
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -20,34 +19,30 @@ class MainActivity : AppCompatActivity() {
 
         topButton.setOnClickListener {
             SlidingToast.build(this)
-                .setBackgroundColor(R.color.colorRed)
-                .setMessage("This is an example of the error message")
                 .setIcon(R.drawable.ic_warning)
-                .setDuration(5000)
+                .setMessage(R.string.top_toast_message)
+                .setBackgroundColor(R.color.colorRed)
+                .setDuration(4000)
                 .setDismissListener(object : SlidingToastDismissListener {
                     override fun onDismiss(dismissType: Int) {
-                        var desc = ""
-                        when (dismissType) {
-                            DURATION_COMPLETE -> desc =
-                                "Cookie display duration completed"
-                            USER_DISMISS -> desc = "Cookie dismissed by user"
-                            USER_ACTION_CLICK -> desc =
-                                "Cookie dismissed by action click"
-                            PROGRAMMATIC_DISMISS -> desc =
-                                "Cookie dismissed programmatically"
-                            REPLACE_DISMISS -> desc = "Replaced by new cookie"
+                        val description = when (dismissType) {
+                            DURATION_COMPLETE -> "Toast display duration completed"
+                            USER_DISMISS -> "Toast dismissed by user"
+                            PROGRAMMATIC_DISMISS -> "Toast dismissed programmatically"
+                            REPLACE_DISMISS -> "Replaced by new Toast"
+                            else -> "Other"
                         }
-                        Toast.makeText(this@MainActivity, desc, Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@MainActivity, description, Toast.LENGTH_LONG).show()
                     }
                 })
                 .show()
         }
         bottomButton.setOnClickListener {
             SlidingToast.build(this)
-                .setDuration(5000)
                 .setIcon(R.drawable.ic_success)
-                .setMessage("This is an example of the success message")
+                .setMessage(R.string.bottom_toast_message)
                 .setBackgroundColor(R.color.colorGreen)
+                .setDuration(4000)
                 .setToastPosition(SlidingToast.BOTTOM)
                 .show()
         }
