@@ -214,7 +214,7 @@ internal class SlidingToastView constructor(
     }
 
     fun dismiss(listener: SlidingToastDismissListener? = null) {
-        handler.removeCallbacksAndMessages(null)
+        handler?.removeCallbacksAndMessages(null)
         if (listener != null) {
             dismissListener = listener
         }
