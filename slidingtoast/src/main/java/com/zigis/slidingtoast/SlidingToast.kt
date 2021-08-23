@@ -63,7 +63,9 @@ class SlidingToast private constructor(
                 child.dismiss(object : SlidingToastDismissListener {
                     override fun onDismiss(dismissType: Int) {
                         dismissListener?.onDismiss(REPLACE_DISMISS)
-                        parent.addView(toast)
+                        if (toast.parent == null) {
+                            parent.addView(toast)
+                        }
                     }
                 })
                 return

@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.Animation.AnimationListener
 import android.view.animation.AnimationUtils
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.AttrRes
@@ -22,7 +23,6 @@ import androidx.core.content.res.ResourcesCompat
 import com.zigis.slidingtoast.SlidingToastDismissListener.DismissType.Companion.DURATION_COMPLETE
 import com.zigis.slidingtoast.SlidingToastDismissListener.DismissType.Companion.PROGRAMMATIC_DISMISS
 import com.zigis.slidingtoast.SlidingToastDismissListener.DismissType.Companion.USER_DISMISS
-import kotlinx.android.synthetic.main.view_sliding_toast.view.*
 import kotlin.math.abs
 import kotlin.math.sign
 
@@ -79,10 +79,18 @@ internal class SlidingToastView constructor(
     private var isSwipeable = false
     private var timeOutDismiss = false
 
+    private var layoutContainer: LinearLayout? = null
+    private var iconImageView: ImageView? = null
+    private var messageTextView: TextView? = null
+
     //  Initialization
 
     private fun initViews() {
         inflate(context, R.layout.view_sliding_toast, this)
+
+        layoutContainer = findViewById(R.id.layoutContainer)
+        iconImageView = findViewById(R.id.iconImageView)
+        messageTextView = findViewById(R.id.messageTextView)
 
         if (getChildAt(0).layoutParams is LayoutParams) {
             val layoutParams = getChildAt(0).layoutParams as LayoutParams
@@ -90,7 +98,7 @@ internal class SlidingToastView constructor(
         }
 
         initDefaultStyle(context)
-        layoutContainer.setOnTouchListener(this)
+        layoutContainer?.setOnTouchListener(this)
     }
 
     private fun initDefaultStyle(context: Context) {
@@ -100,8 +108,8 @@ internal class SlidingToastView constructor(
             context, R.attr.slidingToastBackgroundColor,
             ContextCompat.getColor(context, R.color.green)
         )
-        messageTextView.setTextColor(messageColor)
-        layoutContainer.setBackgroundColor(backgroundColor)
+        messageTextView?.setTextColor(messageColor)
+        layoutContainer?.setBackgroundColor(backgroundColor)
     }
 
     private fun setDefaultTextSize(textView: TextView, @AttrRes attr: Int) {
@@ -165,8 +173,8 @@ internal class SlidingToastView constructor(
         dismissListener = params.dismissListener
 
         if (params.iconResId != 0 && iconImageView != null) {
-            iconImageView.visibility = VISIBLE
-            iconImageView.setBackgroundResource(params.iconResId)
+            iconImageView?.visibility = VISIBLE
+            iconImageView?.setBackgroundResource(params.iconResId)
             if (params.iconAnimator != null) {
                 params.iconAnimator?.setTarget(iconImageView)
                 params.iconAnimator?.start()
@@ -174,19 +182,19 @@ internal class SlidingToastView constructor(
         }
 
         if (!params.message.isNullOrBlank()) {
-            messageTextView.visibility = VISIBLE
-            messageTextView.text = params.message
+            messageTextView?.visibility = VISIBLE
+            messageTextView?.text = params.message
             if (params.messageFont != 0) {
-                messageTextView.typeface = ResourcesCompat.getFont(context, params.messageFont)
+                messageTextView?.typeface = ResourcesCompat.getFont(context, params.messageFont)
             }
             if (params.messageColor != 0) {
-                messageTextView.setTextColor(ContextCompat.getColor(context, params.messageColor))
+                messageTextView?.setTextColor(ContextCompat.getColor(context, params.messageColor))
             }
-            setDefaultTextSize(messageTextView, R.attr.slidingToastMessageSize)
+            setDefaultTextSize(messageTextView!!, R.attr.slidingToastMessageSize)
         }
 
         if (params.backgroundColor != 0) {
-            layoutContainer.setBackgroundColor(
+            layoutContainer?.setBackgroundColor(
                 ContextCompat.getColor(context, params.backgroundColor)
             )
         }
@@ -207,7 +215,7 @@ internal class SlidingToastView constructor(
         val paddingStart = ThemeResolver.getDimen(context, R.attr.slidingToastPaddingStart, defaultHorizontalPadding)
         val paddingEnd = ThemeResolver.getDimen(context, R.attr.slidingToastPaddingEnd, defaultHorizontalPadding)
 
-        layoutContainer.setPadding(paddingStart, paddingTop, paddingEnd, paddingBottom)
+        layoutContainer?.setPadding(paddingStart, paddingTop, paddingEnd, paddingBottom)
 
         createInAnim()
         createOutAnim()
@@ -284,7 +292,7 @@ internal class SlidingToastView constructor(
         viewWidth = width.toFloat()
         dismissOffsetThreshold = viewWidth / 3
         if (layoutGravity == Gravity.TOP) {
-            super.onLayout(changed, l, 0, r, layoutContainer.measuredHeight)
+            super.onLayout(changed, l, 0, r, layoutContainer?.measuredHeight ?: 0)
         } else {
             super.onLayout(changed, l, t, r, b)
         }
