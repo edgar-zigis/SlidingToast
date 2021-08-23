@@ -10,11 +10,11 @@ Based on https://github.com/AviranAbady/CookieBar2, however this version is ligh
 ### Gradle
 Make sure you have jitpack.io included in your gradle repositories.
 
-```
+```gradle
 maven { url "https://jitpack.io" }
 ```
-```
-implementation 'com.github.edgar-zigis:slidingtoast:1.0.1'
+```gradle
+implementation 'com.github.edgar-zigis:slidingtoast:1.0.2'
 ```
 ### Usage
 ``` kotlin
