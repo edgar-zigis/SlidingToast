@@ -8,13 +8,17 @@ Based on https://github.com/AviranAbady/CookieBar2, however this version is ligh
 ![alt text](https://github.com/edgar-zigis/SlidingToast/blob/master/sample.gif?raw=true)
 
 ### Gradle
-Make sure you have jitpack.io included in your gradle repositories.
+Make sure you have **Maven Central** included in your gradle repositories.
 
 ```gradle
-maven { url "https://jitpack.io" }
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
 ```
 ```gradle
-implementation 'com.github.edgar-zigis:slidingtoast:1.0.2'
+implementation 'com.bio-matic:slidingtoast:1.0.3'
 ```
 ### Usage
 ``` kotlin
