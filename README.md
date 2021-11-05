@@ -1,4 +1,4 @@
-# SlidingToast
+# SlidingToast [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.bio-matic/slidingtoast/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.bio-matic/slidingtoast)
 
 A fancy way to display Android toasts!
 Based on https://github.com/AviranAbady/CookieBar2, however this version is lightweight without custom view inflation etc.
