@@ -18,7 +18,7 @@ allprojects {
 }
 ```
 ```gradle
-implementation 'com.bio-matic:slidingtoast:1.0.3'
+implementation 'com.bio-matic:slidingtoast:1.0.4'
 ```
 ### Usage
 ``` kotlin
