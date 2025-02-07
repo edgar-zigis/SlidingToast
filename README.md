@@ -3,7 +3,7 @@
 A fancy way to display Android toasts!
 Based on https://github.com/AviranAbady/CookieBar2, however this version is lightweight without custom view inflation etc.
 
-##### Minimum target SDK: 17. RTL SUPPORTED.
+##### Minimum target SDK: 21. RTL SUPPORTED.
 
 ![alt text](https://github.com/edgar-zigis/SlidingToast/blob/master/sample.gif?raw=true)
 
